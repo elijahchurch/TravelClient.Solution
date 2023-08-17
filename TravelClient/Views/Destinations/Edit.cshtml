@@ -1,0 +1,28 @@
+@{
+  ViewData["Title"] = $"Edit {Model.CityName}";
+}
+
+@model TravelClient.Models.Destination
+
+<h4>Edit @Model.CityName Review</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.DestinationId)
+  @Html.LabelFor(model => model.CityName)
+  @Html.TextBoxFor(model => model.CityName, new { @Value = Model.CityName})
+  <br>
+  @Html.LabelFor(model => model.Country)
+  @Html.TextBoxFor(model => model.Country, new { @Value = Model.Country})
+  <br>
+  @Html.LabelFor(model => model.Review)
+  @Html.TextAreaFor(model => model.Review, new { @Value = Model.Review})
+  <br>
+  @Html.LabelFor(model => model.Rating)
+  @Html.TextBoxFor(model => model.Rating, new { type="number",@Value= Model.Rating})
+  <br>
+  <input type="submit" value="Edit Review"/>
+}
+
+<br>
+<p>@Html.ActionLink("Back to details", "Details", new {id = @Model.DestinationId})</p>
