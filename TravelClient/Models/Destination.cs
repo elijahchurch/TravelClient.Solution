@@ -34,5 +34,11 @@ namespace TravelClient.Models
             Destination destination = JsonConvert.DeserializeObject<Destination>(jsonResponse.ToString());
             return destination;
         }
+
+        public static void Post(Destination destination)
+        {
+            string jsonDestination = JsonConvert.SerializeObject(destination);
+            ApiHelper.Post(jsonDestination);
+        }
     }
 }
