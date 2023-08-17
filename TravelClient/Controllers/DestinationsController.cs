@@ -12,4 +12,10 @@ public class DestinationsController : Controller
         List<Destination> destinations = Destination.GetDestinations();
         return View(destinations);
     }
+
+    public IActionResult Details(int id)
+    {
+        Destination model = Destination.GetDetails(id);
+        return View(model);
+    }
 }

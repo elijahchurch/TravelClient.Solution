@@ -24,5 +24,15 @@ namespace TravelClient.Models
             List<Destination> destinationList = JsonConvert.DeserializeObject<List<Destination>>(jsonResponse.ToString());
             return destinationList;
         }
+
+        public static Destination GetDetails(int id)
+        {
+            var apiCallTask = ApiHelper.Get(id);
+            var result = apiCallTask.Result;
+            Console.WriteLine(result);
+            JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
+            Destination destination = JsonConvert.DeserializeObject<Destination>(jsonResponse.ToString());
+            return destination;
+        }
     }
 }
