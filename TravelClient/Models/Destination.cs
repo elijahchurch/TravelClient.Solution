@@ -1,6 +1,12 @@
+using System.Collections.Generic;
+using System;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+
 namespace TravelClient.Models
 {
-    public Destination
+    public class Destination
     {
         public int DestinationId {get; set;}
         public string CityName { get; set;}
@@ -15,7 +21,7 @@ namespace TravelClient.Models
             var result = apiCallTask.Result;
 
             JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(result);
-            List<Destination> destinationList = JsonConvert.DeserializeObject<destinationList<Destination>>(jsonResponse.ToString());
+            List<Destination> destinationList = JsonConvert.DeserializeObject<List<Destination>>(jsonResponse.ToString());
             return destinationList;
         }
     }
