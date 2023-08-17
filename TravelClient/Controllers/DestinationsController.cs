@@ -42,4 +42,17 @@ public class DestinationsController : Controller
         Destination.Put(destination);
         return RedirectToAction("Details", new { id = destination.DestinationId});
     }
+
+    public IActionResult Delete(int id)
+    {
+        Destination destination = Destination.GetDetails(id);
+        return View(destination);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public IActionResult DeleteConfirm(int id)
+    {
+        Destination.Delete(id);
+        return RedirectToAction("Index");
+    }
 }
